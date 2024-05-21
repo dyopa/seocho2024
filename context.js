@@ -41,3 +41,18 @@ if (g1 > 10) {
   let g1 = 1000;
 }
 console.log(g1);
+
+console.log('-----------------');
+
+var xxx = 1;
+const yyy = 2;
+function foo(aaa) {
+  var xxx = 3;
+  const yyy = 4;
+  function bar(bbb) {
+    const zzz = 5;
+    console.log(aaa + bbb + xxx + yyy + zzz);
+  }
+  bar(10);
+}
+foo(20);
