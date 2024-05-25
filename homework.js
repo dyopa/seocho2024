@@ -37,3 +37,49 @@ for (let n = 1; n < 11; n = n + 1) {
 // 2. Math.sqrt(Number(n.toFixed(3))); 으로 시도했으나 반올림이 안됨
 //    toFixed로 3번째 자리까지 맞추고 > 숫자로 바꾸고 > 다시 Math.sqrt로 소수점만들어버린 것 같다고 생각함. 의미가 없었음. 코드 수정 필요
 //    Number(Math.sqrt(n).toFixed(3)); 으로 해결 Number안쓰면 문자열로 반환됨
+
+console.log('3번문제 switch 사용 ================================');
+// 오늘 날짜와 요일을 출력하는 switch문을 사용해서 작성해보고 ,switch를 사용하지 않는 방법도 써보세요.
+// const new Date(); today.getDay(); //요일번호
+// 오늘은 금요일 입니다. //(const WEEK_NAMES = '일월화수목금토')
+
+const today = new Date();
+{
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
+  var week = today.getDay();
+
+  console.log(year + '-' + month + '-' + day);
+}
+
+switch (week) {
+  case 0:
+    console.log('오늘은 일요일 입니다');
+    break;
+  case 1:
+    console.log('오늘은 월요일 입니다');
+    break;
+  case 2:
+    console.log('오늘은 화요일 입니다');
+    break;
+  case 3:
+    console.log('오늘은 수요일 입니다');
+    break;
+  case 4:
+    console.log('오늘은 목요일 입니다');
+    break;
+  case 5:
+    console.log('오늘은 금요일 입니다');
+    break;
+  case 6:
+    console.log('오늘은 토요일 입니다');
+    break;
+    console.log('🚀 ~ today:', week);
+}
+
+console.log('3번문제 switch (X) ---------------------------------');
+
+const WEEK_NAMES = new Array('일', '월', '화', '수', '목', '금', '토');
+var today_1 = new Date().getDay();
+console.log('오늘은 ' + WEEK_NAMES[today_1] + '요일 입니다');
