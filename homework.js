@@ -9,6 +9,7 @@ for (let i = 0.1; i < 1; i = i + 0.1) {
     console.log('🚀 ~ i:', Number(i.toFixed(1)));
   }
 }
+// console.log('🚀 ~ i:', +i.toFixed(1)); 도 가능
 
 // 들어가야한다고 생각한것
 // 1 : i 변수 선언
@@ -21,7 +22,7 @@ console.log('2번문제 Math.sqrt 사용 ================================');
 let n = 1;
 
 for (let n = 1; n < 11; n = n + 1) {
-  if (Math.sqrt(n) % 1 === 0) {
+  if (Math.sqrt(n) % 1 === 0) { 
   } else console.log('🚀 ~ n:', Number(Math.sqrt(n).toFixed(3)));
 }
 
@@ -83,3 +84,8 @@ console.log('3번문제 switch (X) ---------------------------------');
 const WEEK_NAMES = new Array('일', '월', '화', '수', '목', '금', '토');
 var today_1 = new Date().getDay();
 console.log('오늘은 ' + WEEK_NAMES[today_1] + '요일 입니다');
+
+console.log('4번문제 addpoint ================================');
+//다음과 같이 올바른 더하기 연산을 하는 addpoints 함수를 작성하시오.
+//(단,소수점 자리수는 긴쪽으로 맞춘다)
+
