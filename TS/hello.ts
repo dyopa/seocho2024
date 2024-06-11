@@ -83,7 +83,7 @@ if (typeof a == 'string') console.log(a?.length);
 const hong = { id: 1, name: 'Hong', addr: 'Seoul' };
 const users = [hong, { id: 2, name: 'Kim' }];
 
-console.log(users.find((user) => user.id == 3)?.['name']);
+// console.log(users.find((user) => user.id == 3)?.['name']);
 
 function getHong() {
   return { id: 1, name: 'Hong', addr: 'Seoul' };
