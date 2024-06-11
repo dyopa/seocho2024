@@ -29,7 +29,7 @@ type Member = {
   name: string;
   addr: string;
   discountRate: number;
-  spend: object;
+  spend: number[];
 };
 type Guest = {
   name: string;
