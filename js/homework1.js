@@ -29,8 +29,6 @@ console.log('디스트럭처링 연습문제3 푸는중');
 //다음 arr에서 3의 id를 id1, id2, id3으로 할당하시오
 
 const arr = [[{ id: 1 }], [{ id: 2 }, { id: 3 }]];
-const id1 = arr[0][0].id;
-const id2 = arr[1][0].id;
-const id3 = arr[1][1].id;
+const [[{ id: id1 }], [{ id: id2 }, { id: id3 }]] = arr;
 console.log(id1, id2, id3);
 //출력결과 : 1 2 3
