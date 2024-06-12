@@ -62,14 +62,28 @@ const WEEK_NAMES = '일월화수목금토';
 var today_1 = new Date().getDay();
 console.log(`오늘은 ${WEEK_NAMES[today_1]}요일 입니다`);
 
-console.log('4번문제 addpoint ================================');
+console.log('4번문제 addpoint 아직 못품================================');
 //다음과 같이 올바른 더하기 연산을 하는 addpoints 함수를 작성하시오.
 //(단,소수점 자리수는 긴쪽으로 맞춘다)
 
-function addPoints(a, b) {
-  return a + b;
+function getLen(s) {
+  return (s ?? '').toString().length;
 }
+function addPoints(a, b) {
+  // let len = getLen(a);
+  // if (getLen(b) > len) len = getLen(b);
 
-console.log(addPoints(0.21354, 0.1));
-console.log(addPoints(0.14, 0.28));
-console.log(addPoints(0.34, 0.226));
+  // const aLen = getLen(a);
+  // const bLen = getLen(b);
+  // const len = aLen > bLen ? aLen : bLen;
+
+  const len = Math.max(getLen(a), getLen(b));
+
+  const ret = (a + b).toFixed(len - 2);
+  console.log('🚀>>', ret);
+
+  return +ret;
+}
+console.log(addPoints(0.21354, 0.1) === 0.31354);
+console.log(addPoints(0.14, 0.28) === 0.42);
+console.log(addPoints(0.34, 0.226) === 0.566);
