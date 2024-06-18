@@ -7,7 +7,9 @@
 
 // console.log(counter()); // 1
 // console.log(counter()); // 2
-// console.log(counter1()); // 3
+// console.log(counter()); // 3
+
+console.log('----상태유지');
 
 function counter() {
   let count = 0;
@@ -40,6 +42,7 @@ for (const { item, price: orgPrice } of items) {
   console.log(`${item}:${orgPrice}원-->${salePrice.toLocaleString()}원`);
 }
 
+console.log('----데이터 은닉 캡슐화');
 //-----------------------------
 function currentCount() {
   let currCount = 0;
@@ -65,4 +68,50 @@ for (const action of actions) {
   action === '입장' ? counter3.connect() : counter3.disconnect();
   console.log(`${action}-> 현재입장객: ${counter3.count}명`);
 }
-console.log('current Iser Count=', counter3.count);
+console.log('current User Count=', counter3.count);
+
+console.log('----함수 팩토리');
+//----------------------------
+
+function Greeter(greeting) {
+  return function (name) {
+    console.log(`${greeting},${name}`);
+  };
+}
+
+const greetHello = Greeter('Hello');
+const greetHi = Greeter('Hi');
+
+greetHello('Alice');
+greetHi('Bob');
+
+console.log('----콜백 비동기');
+//----------------------------
+
+function fetchData(ur1) {
+  fetch(ur1)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+fetchData('https://api.example.com/data');
+
+console.log('----모듈 패턴구현');
+//--------------------------
+const Module = (function () {
+  let privateVariable = 'I am private';
+
+  function privateMethod() {
+    console.log(privateVariable);
+  }
+  return {
+    publicMethod: function () {
+      privateMethod();
+    },
+  };
+})();
+
+Module.publicMethod();
