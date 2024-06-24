@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet" />
+    <title>Mina</title>
+    <link href="src/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
+    />
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <body class="bg-gray-100">
+    <header>
+      <div class="loginlogo">
+        <img src="path/to/logo.jpg" alt="Login Logo" />
+      </div>
+      <p class="text-sm text-gray-500">오늘 할일을 민다와 함께하세요.</p>
+    </header>
+    <main>
+      <section>
+        <div class="mascotlogo">
+          <img src="path/to/mascot.jpg" alt="Mascot Logo" />
+        </div>
+      </section>
+      <aside>
+        <label
+          for="email"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Email address</label
+        >
+        <div class="loginbox mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+        <div class="passwdbox loginbox mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
+          <input
+            type="password"
+            placeholder="Password"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+        <button
+          class="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-5 sm:mx-auto sm:w-full sm:max-w-sm"
+        >
+          login
+        </button>
+        <div class="googlebox mt-4">
+          <button class="bg-gray-100 text-gray-400 font-bold py-2 px-4 rounded">
+            구글연동
+          </button>
+        </div>
+        <div class="kakaobox mt-4">
+          <button class="bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+            카카오연동
+          </button>
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <div class="signup">
+        <a href="#" class="text-blue-500">Sign Up</a>
+        <a href="#" class="text-blue-500 ml-4">Forgot Password</a>
+      </div>
+    </footer>
   </body>
 </html>
