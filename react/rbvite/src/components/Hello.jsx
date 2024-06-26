@@ -1,18 +1,23 @@
-// import PropTypes from 'prop-types';
-
-// Hello.propTypes = {
-//     name: PropTypes.string.isRequired,
-//     age: PropTypes.number,
-//     isMale: PropTypes.bool,
-//     plusCount: PropTypes.func,
-//     // children: PropTypes.children,
-//     children: PropTypes.func,
-//   }
-
+import { useEffect } from "react";
+import { useCount } from "../hooks/counter-context";
 
 export default function Hello(props) {
-  // console.log('Heeeeeeeeelo')
-  return <h1 onClick={props.plusCount} style={{
-  cursor: 'pointer'
-}}>Hello, {props.name}! <small className="font-sm text-red-500">({props.age + 1})</small></h1>
-}
+  // console.log("Heeeeeeeeelo!!");
+  const { plusCount } = useCount();
+
+  useEffect(() => {
+    // console.log("Hello - useEffect!!");
+  }, []);
+
+  return (
+    <h1
+      onClick={plusCount}
+      style={{
+        cursor: "pointer",
+      }}
+    >
+      Hello, {props.name}!{" "}
+      <small className="font-sm text-red-500">({props.age + 1})</small>
+    </h1>
+  );
+}  

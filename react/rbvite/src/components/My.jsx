@@ -4,29 +4,27 @@ import Login from "./Login";
 import Profile from "./Profile";
 import Button from "./atoms/Button";
 import SampleAtoms from "./atoms/SampleAtoms";
-import ItemEdit from "./ItemEdit";
+import ItemEdit, { MemoedItemEdit } from "./ItemEdit";
+import { useCount } from "../hooks/counter-context";
+import Hello from "./Hello";
+import { useSession } from "./hooks/session-context";
+// import ItemEdit, { MemoedItemEdit } from "./ItemEdit";
 
-export default function My({
-  session: { loginUser, cart },
-  signOut,
-  signIn,
-  removeItem,
-  addItem,
-  saveItem,
-}) {
+export default function My() {
+  const {
+    session: { loginUser, cart },
+    saveItem,
+    addItem,
+    removeItem,
+  } = useSession();
+
   const [isAdding, setIsAdding] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
 
+  const { count } = useCount();
+
   const cancelAdding = () => {
     setIsAdding(false);
-  };
-
-  const editing = (itemId) => {
-    setEditingItem(cart.find((item) => item.id === itemId));
-  };
-
-  const cancelEditing = () => {
-    setEditingItem(null);
   };
 
   // test useEffect
@@ -67,22 +65,38 @@ export default function My({
 
   const addingItem = useMemo(() => ({ name: "", price: 1000 }), []);
 
-  const totalPrice = useMemo(() => {
-    // console.log("ttttttttttttttt");
-    return cart?.reduce((acc, item) => acc + item.price, 0);
-  }, [cart]);
+  const editing = (itemId) => {
+    const item = cart.find((item) => item.id === itemId);
+    setEditingItem(item);
+    setPrePrice(item.price);
+  };
+  const cancelEditing = () => {
+    setEditingItem(null);
+    setPrePrice(0);
+  };
+  const editItem = (item) => {
+    saveItem(item);
+    if (prePrice !== item.price) setTotalPriceToggleFlag(!totalPriceToggleFlag);
+  };
 
-  // const MemoedItemEdit = memo(ItemEdit);
+  const [totalPriceToggleFlag, setTotalPriceToggleFlag] = useState(false);
+  const [prePrice, setPrePrice] = useState(0);
+  const totalPrice = useMemo(() => {
+    console.log("tttotalPrice>>", totalPriceToggleFlag);
+    return cart?.reduce((acc, item) => acc + item.price, 0);
+  }, [cart, totalPriceToggleFlag]);
 
   return (
     <>
-      {loginUser ? (
-        <Profile name={loginUser?.name} signOut={signOut} />
-      ) : (
-        <Login singIn={signIn} />
-      )}
+      <div>
+        <Hello name={loginUser.name} age={loginUser.age} />
+      </div>
 
-      <h1>Second: {time}</h1>
+      {loginUser ? <Profile /> : <Login />}
+
+      <h1>
+        Second: {time} - {count}
+      </h1>
 
       <div className="my-5 border text-center">
         <ul>
@@ -93,7 +107,7 @@ export default function My({
                     <ItemEdit
                       item={editingItem}
                       cancel={cancelEditing}
-                      save={saveItem}
+                      save={editItem}
                     />
                   ) : (
                     <>
@@ -132,9 +146,12 @@ export default function My({
           * Total: {totalPrice.toLocaleString()}원
         </h3>
         {isAdding ? (
-          <ItemEdit item={addingItem} cancel={cancelAdding} save={addItem} />
+          <MemoedItemEdit
+            item={addingItem}
+            cancel={cancelAdding}
+            save={addItem}
+          />
         ) : (
-          // <MemoedItemEdit />
           <Button
             onClick={() => setIsAdding(true)}
             text="+ 상품추가"
@@ -142,8 +159,6 @@ export default function My({
           />
         )}
       </div>
-
-      {/* <MemoedItemEdit /> */}
 
       <SampleAtoms />
     </>
