@@ -1,4 +1,4 @@
-import { useSession } from "./hooks/session-context";
+import { useSession } from "../hooks/session-context";
 import Button from "./atoms/Button";
 
 export default function Profile() {
