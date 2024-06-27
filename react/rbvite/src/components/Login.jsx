@@ -1,10 +1,13 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import Button from "./atoms/Button";
 import Input from "./atoms/Input";
 
-export default function Login({ singIn }) {
+export default function Login({ signIn }) {
+  // const { login: signIn } = useSession();
   const nameRef = useRef();
   const passwdRef = useRef();
+
+  // console.log("Looooooooooooogin!!");
 
   const login = (evt) => {
     evt.preventDefault();
@@ -19,7 +22,7 @@ export default function Login({ singIn }) {
       return;
     }
 
-    singIn(nameRef.current.value);
+    signIn(nameRef.current.value);
   };
 
   useEffect(() => {
@@ -55,3 +58,5 @@ export default function Login({ singIn }) {
     </form>
   );
 }
+
+export const MemoedLogin = memo(Login);
