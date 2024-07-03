@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 export default function InterceptLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="border-2 p-7 mb-3"> {children}</div>
+      <div className="border-2 p-7 mb-3">{children}</div>
 
       <ul>
         <li className="flex gap-5">
