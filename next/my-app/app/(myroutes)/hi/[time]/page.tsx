@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { TIMES } from '@/utils/route-utils';
+import { TIMES } from '@/lib/route-utils';
 
 type Params = {
   params: {
@@ -25,5 +25,5 @@ export default function Time({ params }: Params) {
     redirect('/hi');
   }
 
-  return <h3 className='text-3xl'>Good {toUpperFirstChar(time)}!</h3>;
+  return <h3 className="text-3xl">Good {toUpperFirstChar(time)}!</h3>;
 }
