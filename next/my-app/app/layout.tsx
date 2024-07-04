@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { Button } from '@/components/ui/button';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <div className="flex fixed justify-around w-full bg-slate-100">
-          <Link href="/csr">CSR</Link>
+          <Button variant="link">
+            <Link href="/csr">CSR</Link>
+          </Button>
           <Link href="/ssg">SSG</Link>
           <Link href="/ssr">SSR</Link>
           <Link href="/isr">ISR</Link>

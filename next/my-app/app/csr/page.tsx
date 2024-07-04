@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { User, getUsers } from '@/lib/placeholder';
+import { Button } from '@/components/ui/button';
 
 export default function CSR() {
   console.log('CSR!!!!!!!!!!!', new Date());
@@ -22,9 +23,12 @@ export default function CSR() {
   return (
     <>
       <h1>This is About Page!! {dtStr}</h1>
-      <Link href="/">GoHome</Link>
+      {/* <Link href="/">GoHome</Link>
+       */}
+      <Button variant="outline">Home</Button>
+      <Button variant="link">GoHome</Button>
 
-      <hr className="w-24 mt-3" />
+      {/* <hr className="w-24 mt-3" /> */}
       <ul>
         {users.map((user) => (
           <li key={user.id}>

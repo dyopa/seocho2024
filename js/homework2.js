@@ -14,7 +14,7 @@ for (let value in arr) {
 
 console.log('------------------');
 
-const obj = { name: 'lim', addr: 'Yingsan', lecel: 1, role: 9, receive: false };
+const obj = { name: 'lim', addr: 'Yingsan', level: 1, role: 9, receive: false };
 //3.for-in문을 사용하여 프로퍼티 이름(키)을 출력하시오
 for (let key1 in obj) {
   console.log(key1);
@@ -28,8 +28,14 @@ for (let value in obj) {
 console.log('------------------');
 
 //5.for-of문을 사용하여 프로퍼티 값을 출력하시오
-
+for (const value1 of Object.values(obj)) {
+  console.log(value1);
+}
+console.log('------------------');
 //6.level 프로퍼티가 열거(노출)되지 않도록 설정하시오 //object.defineProperty
+Object.defineProperty(obj, 'level', { enumerable: false });
+
+console.log('------------------');
 //7. role 프로퍼티는 읽기전용으로 설정하시오 // object.defineProperty
 
 console.log('객체,프로퍼티 연습문제2 푸는중');
